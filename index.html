@@ -28,7 +28,30 @@
         </section>
         <section id="Vue" style="background-image: url('img/facebook.png');" v-bind:class="{'v-cloak': loaded}">
 			<button v-if="!btn_clicked" onClick="app.btn_clicked=true;app.generate_article();" >{{message}}</button>
-			<article v-if="btn_clicked">I'm a generated article !</article>
+            <article v-if="article">
+                <header>
+                    <div style="display: inline-block; width:50px;">
+                        <img src="img/profil.jpg"/>
+                    </div>
+                    <div style="display:inline-block; width: calc(100% - 60px);">
+                        <p>Nicolas Brondin</p>
+                        <p>il y a 1 minute</p>
+                    </div>
+                </div>
+                <div class="user-text">
+                    <p>Woah.</p>
+                </div>
+                <div class="media-info">
+                    <div class="media-image">
+                        <img v-bind:src="article.media.visual.url" />
+                    </div>
+                    <div class="media-text">
+                        <h1>{{article.media.title | length(50)}}</h1>
+                        <h2>La description du lien</h2>
+                        <h3>SITE.COM</h3>
+                    </div>
+                </div>
+            </article>
 		</section>
 		<section id="email">
 			<header>
@@ -50,25 +73,35 @@
 		<script src="https://cdn.jsdelivr.net/npm/vue-resource@1.3.3"></script>
 		
 		<script type="text/javascript">
+            
+            var post_to_html = function(post){
+                var html ="";
+                return html;
+            };
 		
 			var app = new Vue({
 				el: '#Vue',
 				data: {
 					loaded: true,
 					message: 'MONTRE-MOI !',
-					btn_clicked: false
+					btn_clicked: false,
+                    article: ''
 				},
 				methods: {
 					generate_article: function() {
 						// send get request
-						this.$http.get("/article", {}, function (data, status, request) {
+						this.$http.post("http://localhost:3000/article", {}).then(function (data, status, request) {
 							// set data on vm
-							this.article = data;
-						}).error(function (data, status, request) {
-							console.error(status);
+                            console.log(data);
+							app.article = data.body;
 						});
 					}
-				}
+				},
+                  filters: {
+                    length: function (str, l) {
+                      return str.substr(0,l)+"...";
+                    }
+                  }
 			});
 		
 		</script>

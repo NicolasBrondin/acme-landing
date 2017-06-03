@@ -109,14 +109,6 @@ section#Vue button{
     cursor:pointer;
 }
 
-section article {
-	background: white;
-	width:80%;
-	margin-left:10%;
-	padding-top:20px;
-	padding-bottom: 20px;
-}
-
 section#email h1 {
     color: #222;
     font-weight: 600;
@@ -172,4 +164,60 @@ font-weight: 300;
 	color: #eee;
 	text-align: center;
 }
+
+article {
+		padding: 10px;
+		background: white;
+        width:600px;
+    display: inline-block;
+    text-align: left;
+	}
+	
+	article header {
+	}
+	
+	article header p {
+		margin:0;
+		padding: 0;
+	}
+	
+	article .media-info{
+		border: 1px solid lightgrey;
+	}
+	
+	article .media-image {
+		max-height: 470px;
+		overflow: hidden;
+	}
+	
+	article .media-image img{
+		width:100%;
+	}
+	
+	article .media-text {
+		padding: 10px;
+	}
+	
+	article .media-info h1 {
+	margin:0;
+	color:black;
+	font-weight: normal;
+	font-size:24px;
+	font-family: Times New Roman;
+	}
+	
+	article .media-info h2 {
+		font-size: 16px;
+		color: black;
+		font-weight: normal;
+		
+	}
+	
+	
+	article .media-info h3 {
+		font-weight: 300;
+		color: grey;
+		margin:0;
+		font-size: 16px;
+	}
 
