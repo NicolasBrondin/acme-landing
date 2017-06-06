@@ -11,11 +11,11 @@ html, body{
     100% { transform: translate(0px,0px) }
 }
 
-#Vue {
+#generator {
 	display:none;
 }
 
-#Vue.v-cloak {
+#generator.v-cloak {
 	display:block;
 }
 
@@ -98,8 +98,8 @@ font-weight: 500;
 font-size: 25px;
 }
 
-section#Vue button{
-	background: lightblue;
+section#generator button{
+	background: #3498db;
 	color:white;
 	border:none;
 	padding:25px;
@@ -107,6 +107,10 @@ section#Vue button{
 	padding-right:50px;
 	font-size: 25px;
     cursor:pointer;
+    display: block;
+margin: auto;
+margin-bottom: 20px;
+margin-top: 20px;
 }
 
 section#email h1 {
