@@ -96,7 +96,7 @@
 				methods: {
 					generate_article: function() {
 						// send get request
-						this.$http.post("https://acme-network-api.herokuapp.com/article", {}).then(function (data, status, request) {
+						this.$http.post("https://just-acme-api.herokuapp.com/article", {}).then(function (data, status, request) {
 							// set data on vm
                             console.log(data);
 							app.article = data.body;
