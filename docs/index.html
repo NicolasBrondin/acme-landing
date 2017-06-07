@@ -1,10 +1,10 @@
-<!DOCTYPE html />
+<!DOCTYPE html>
 <html lang="fr" itemscope itemtype="http://schema.org/WebApplication">
 	<head>
         <title>ACME - Le community manager automatisé</title>
         
         <!-- General seo markup -->
-        <meta charset="utf-8"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="keywords" content="ACME, Community Management, Community manager, Gestionnaire de communauté, Communauté, Facebook, Twitter, Intelligence artificielle, IA, AI, Génération, Posts, Status, Page facebook, Création de contenu, Automation, Réseaux sociaux, Social Network, Automatisation, Buffer, Feedly"/>
         <meta name="description" content="Avec ACME, créer du contenu thématique de qualité sur les réseaux sociaux n'a jamais été aussi simple."/>
         <meta name="author" content="Nicolas Brondin"/>
@@ -51,7 +51,7 @@
         <div id="Vue">
 		<section style="background-image: url('img/city-dark.png');background-position: bottom center;">
 			<header>
-				<img src="img/acme-logo.png"/>
+				<img src="img/acme-logo.png" alt="logo"/>
 			</header>
 			<h1 style="color: white;">Le premier community manager complêtement automatisé !</h1>
             <h2>#IntelligenceArtificielle</h2>
@@ -60,7 +60,7 @@
 		<section id="presentation">
 			<h1>Créer du contenu sur les réseaux sociaux te prend trop de temps ?</h1>
 			
-            <img src="img/man-computer.png" style="width:500px;max-width:100%;"/>
+            <img src="img/man-computer.png" style="width:500px;max-width:100%;"/ alt="man on a computer">
 			<h2>Grâce à notre intelligence artificielle, 
                 trouver du contenu thématique à partager,
                 rédiger un post optimisé avec un lien vers votre site et 
@@ -73,7 +73,7 @@
             <article v-if="article">
                 <header>
                     <div style="display: block;width: 50px;float: left;">
-                        <img src="img/profile.png" style="width:50px;"/>
+                        <img src="img/profile.png" style="width:50px;" alt="profile pic"/>
                     </div><div style="display: block;width: calc(100% - 100px);padding-top: 10px;float: left;padding-left: 10px;padding-bottom: 7px;">
                         <p style="color: rgb(54, 88, 153);font-weight: bold;margin-top: -6px;">Nicolas Brondin</p>
                         <p style="color: grey;font-size: 14px;">il y a 1 minute</p>
@@ -84,7 +84,7 @@
                 </div>
                 <div class="media-info">
                     <div class="media-image">
-                        <img v-bind:src="article.media.visual.url" />
+                        <img v-bind:src="article.media.visual.url" alt="article headline"/>
                     </div>
                     <div class="media-text">
                         <h1>{{article.media.title | length(50)}}</h1>
@@ -98,7 +98,7 @@
 			<header>
 				<h1>Intéressé ?</h1>
 			</header>
-            <img src="img/email.png" style="width:250px;max-width:100%;"/>
+            <img src="img/email.png" style="width:250px;max-width:100%;" alt="mailbox"/>
 			<h2>Tu veux être le premier à faire décoller tes réseaux sociaux grâce au meilleur community manager automatisé ?</h2>
 			<p>#FileTonEmail</p>
             <div style="padding:20px;">
