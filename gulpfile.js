@@ -30,7 +30,7 @@ var paths = {
 // Clean
 var taskClean='clean';
 gulp.task(taskClean, function (cb) {
-    del([paths.dist + '/*'], cb);
+    del([paths.dist + '/*','!'+paths.dist + '/CNAME'], cb);
 });
 
 // task minify partials
