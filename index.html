@@ -60,8 +60,8 @@
             <img src="img/email.png" style="width:250px;max-width:100%;"/>
 			<h2>Tu veux être le premier à faire décoller tes réseaux sociaux grâce au meilleur community manager automatisé ?</h2>
 			<p>#FileTonEmail</p>
-            <div>
-                <input type="email" placeholder="hello@mail.xyz" v-model="email"/><button v-on:click="save_email()">OK</button>
+            <div style="padding:20px;">
+                <input type="email" placeholder="hello@mail.xyz" v-model="email"/><button v-if="!email_success" v-on:click="save_email()">OK</button><button class="success" v-if="email_success" v-on:click="save_email()"><i class="material-icons">check</i></button>
             </div>
 		</section>
 		<section class="footer">
@@ -95,13 +95,14 @@
 					message: 'Générer un post',
 					btn_clicked: false,
                     article: '',
-                    email: ''
+                    email: '',
+                    email_success: false
 				},
 				methods: {
 					generate_article: function() {
 						// send get request
                         var url = "https://just-acme-api.herokuapp.com/article/gaming";
-                        //var url = "http://localhost:3000/article/social";
+                        //var url = "http://localhost:3000/article/gaming";
 						this.$http.post(url, {}).then(function (data, status, request) {
 							// set data on vm
                             console.log(data);
@@ -117,6 +118,9 @@
                         //var url = "http://localhost:3000/email";
 						this.$http.post(url, {email: this.email}).then(function (data, status, request) {
 							// set data on vm
+                            if(data.status == 200){
+                                app.email_success = true;
+                            }
                             console.log(data);
 							});
 					},
