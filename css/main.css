@@ -231,3 +231,10 @@ article {
 .success {
     background: #2ecc71 !important;
 }
+
+.keywords {
+    display:block;
+    height:0;
+    overflow:hidden;
+    opacity:0
+}
