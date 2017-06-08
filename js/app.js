@@ -23,15 +23,21 @@
 				},
 				methods: {
 					generate_article: function() {
+                        this.message = "Génération...";
 						// send get request
-                        var url = "https://just-acme-api.herokuapp.com/article/gaming";
-                        //var url = "http://localhost:3000/article/gaming";
+                        //var url = "https://just-acme-api.herokuapp.com/article";
+                        var url = "http://localhost:3000/article";
 						this.$http.post(url, {}).then(function (data, status, request) {
 							// set data on vm
+                            if(data.status == 200){
                             console.log(data);
 							app.article = data.body;
                             app.article.media.description = strip(app.article.media.summary.content);
                             app.article.media.url = app.article.media.originId.replace("http://www.", "").replace("https://www.", "").replace(new RegExp(/[\/].*/), "");
+                            app.message="Générer un autre post";
+                            } else {
+                                app.message="Erreur, réessayer";
+                            }
 						});
 					},
                     save_email: function() {
