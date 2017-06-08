@@ -25,8 +25,8 @@
 					generate_article: function() {
                         this.message = "Génération...";
 						// send get request
-                        //var url = "https://just-acme-api.herokuapp.com/article";
-                        var url = "http://localhost:3000/article";
+                        var url = "https://just-acme-api.herokuapp.com/article";
+                        //var url = "http://localhost:3000/article";
 						this.$http.post(url, {}).then(function (data, status, request) {
 							// set data on vm
                             if(data.status == 200){
