@@ -8,7 +8,8 @@ var gulp = require('gulp'),
     ignore = require("gulp-ignore"),
     useref = require('gulp-useref'),                // Index.html scripts concat/min
     gulpif = require('gulp-if'),
-    size = require('gulp-size'),                    // Log the output size
+    size = require('gulp-size'),  // Log the output size 
+    webserver = require('gulp-webserver'),
     del = require('del')                           // Clean outputs folders/files
 ;
 
@@ -48,10 +49,10 @@ gulp.task(taskMinify, function () {
     return gulp.src(paths.index)
         .pipe(useref())
         .pipe(ignore.exclude([ "**/*.map" ]))
-        .pipe(gulpif('*.js', uglify()))
+        /*.pipe(gulpif('*.js', uglify()))
             .on('error', function(err){
          console.error(err);
-        })
+        })*/
         .pipe(gulpif('*.css', minifyCss()))
         .pipe(gulp.dest(paths.dist))
         .pipe(size({showFiles:true}));
@@ -106,7 +107,19 @@ gulp.task(taskLocales,function() {
         });
 });
 
+var taskServe = 'serve';
+gulp.task(taskServe, function() {
+  gulp.src('.')
+    .pipe(webserver({
+      livereload: true,
+      directoryListing: false,
+      open: false,
+      fallback: 'index.html'
+    }));
+});
+
 
 gulp.task('default', [taskClean, taskMinify, taskMinifyPartials, taskImages, taskFonts, taskFiles, taskLocales]);
+gulp.task('server', [taskServe]);
 
 

@@ -46,74 +46,12 @@
         
         
 	</head>
-	<body   >
-        <div id="Vue">
-		<section style="background-image: url('img/city-dark.png');background-position: bottom center;">
-			<header>
-				<img src="img/acme-logo.png" alt="logo"/>
-			</header>
-			<h1 style="color: white;">Le premier community manager complêtement automatisé !</h1>
-            <h2>#IntelligenceArtificielle</h2>
-            <button><i class="material-icons">keyboard_arrow_down</i></button>
-		</section>
-		<section id="presentation">
-			<h1>Créer du contenu sur les réseaux sociaux te prend trop de temps ?</h1>
-			
-            <img src="img/man-computer.png" style="width:500px;max-width:100%;"/ alt="man on a computer">
-			<h2>Grâce à notre intelligence artificielle, 
-                trouver du contenu thématique à partager,
-                rédiger un post optimisé avec un lien vers votre site et 
-                le poster sur Facebook se fait en un CLIC !</h2>
-			
-			<!--<a href="#Vue">MONTRE-MOI !</a>-->
-        </section>
-        <section id="generator" style="background-image: url('img/facebook.png');" v-bind:class="{'v-cloak': loaded}">
-			<button onClick="app.btn_clicked=true;app.generate_article();" >{{message}}</button>
-            <article v-if="article">
-                <header>
-                    <div style="display: block;width: 50px;float: left;">
-                        <img src="img/profile.png" style="width:50px;" alt="profile pic"/>
-                    </div><div style="display: block;width: calc(100% - 100px);padding-top: 10px;float: left;padding-left: 10px;padding-bottom: 7px;">
-                        <p style="color: rgb(54, 88, 153);font-weight: bold;margin-top: -6px;">ACME</p>
-                        <p style="color: grey;font-size: 14px;">il y a 1 minute</p>
-                    </div>
-                </header>
-                <div class="user-text">
-                    <p style="white-space: pre-line;">{{article.user_text}}</p>
-                </div>
-                <div class="media-info">
-                    <div class="media-image">
-                        <img v-bind:src="article.media.visual.url" alt="article headline"/>
-                    </div>
-                    <div class="media-text">
-                        <h1>{{article.media.title | length(50)}}</h1>
-                        <h2>{{article.media.description | length(100)}}</h2>
-                        <h3>{{article.media.url }}</h3>
-                    </div>
-                </div>
-            </article>
-		</section>
-		<section id="email" itemscope itemtype="http://schema.org/Offer" itemprop="offers">
-			<header>
-				<h1>Intéressé ?</h1>
-			</header>
-            <img src="img/email.png" style="width:250px;max-width:100%;" alt="mailbox"/>
-			<h2 itemprop="price" value="0€">Tu veux être le premier à faire décoller tes réseaux sociaux grâce au meilleur community manager automatisé ?</h2>
-			<p>#FileTonEmail</p>
-            <div style="padding:20px;">
-                <input type="email" placeholder="hello@mail.xyz" v-model="email"/><button v-if="!email_success" v-on:click="save_email()">OK</button><button class="success" v-if="email_success" v-on:click="save_email()"><i class="material-icons">check</i></button>
-            </div>
-		</section>
-		<section class="footer">
-			<p>Tout droit réservé - ACME 2017</p>
-			<p>Fait à Tours (France) avec ♥</p>
-			<p class="keywords" itemscope itemtype="http://schema.org/Person">par <span itemprop="name">Nicolas Brondin</span></p>
-            <p class="keywords">ACME, Community Management, Community manager, Gestionnaire de communauté, Communauté, Facebook, Twitter, Intelligence artificielle, IA, AI, Génération, Posts, Status, Page facebook, Création de contenu, Automation, Réseaux sociaux, Social Network, Automatisation, Buffer, Feedly,ACME, Community Management, Community manager, Gestionnaire de communauté, Communauté, Facebook, Twitter, Intelligence artificielle, IA, AI, Génération, Posts, Status, Page facebook, Création de contenu, Automation, Réseaux sociaux, Social Network, Automatisation, Buffer, Feedly,ACME, Community Management, Community manager, Gestionnaire de communauté, Communauté, Facebook, Twitter, Intelligence artificielle, IA, AI, Génération, Posts, Status, Page facebook, Création de contenu, Automation, Réseaux sociaux, Social Network, Automatisation, Buffer, Feedly,Génération, Gestionnaire de communauté, Communauté, Création de contenu, Réseaux sociaux,Génération, Gestionnaire de communauté, Communauté, Création de contenu, Réseaux sociaux,Génération, Gestionnaire de communauté, Communauté, Création de contenu, Réseaux sociaux</p>
-		</section>
-		
+	<body>
+        <div id="Vue" v-bind:class="{\'v-cloak\': loaded}">
+
 		
         </div>
-        
+         <section class="footer"><p><a href="/trainer">Améliorer l'IA</a></p> <p>Tout droit réservé - ACME 2017</p><p>Fait à Tours (France) avec ♥</p><p class="keywords" itemscope itemtype="http://schema.org/Person">par <span itemprop="name">Nicolas Brondin</span></p><p class="keywords">ACME, Community Management, Community manager, Gestionnaire de communauté, Communauté, Facebook, Twitter, Intelligence artificielle, IA, AI, Génération, Posts, Status, Page facebook, Création de contenu, Automation, Réseaux sociaux, Social Network, Automatisation, Buffer, Feedly,ACME, Community Management, Community manager, Gestionnaire de communauté, Communauté, Facebook, Twitter, Intelligence artificielle, IA, AI, Génération, Posts, Status, Page facebook, Création de contenu, Automation, Réseaux sociaux, Social Network, Automatisation, Buffer, Feedly,ACME, Community Management, Community manager, Gestionnaire de communauté, Communauté, Facebook, Twitter, Intelligence artificielle, IA, AI, Génération, Posts, Status, Page facebook, Création de contenu, Automation, Réseaux sociaux, Social Network, Automatisation, Buffer, Feedly,Génération, Gestionnaire de communauté, Communauté, Création de contenu, Réseaux sociaux,Génération, Gestionnaire de communauté, Communauté, Création de contenu, Réseaux sociaux,Génération, Gestionnaire de communauté, Communauté, Création de contenu, Réseaux sociaux</p></section>
         <!-- build:css css/style.css -->
         <link rel="stylesheet" href="css/main.css" />
         <!-- endbuild -->
@@ -126,10 +64,13 @@
 		<script src="js/ga.js"></script>
 		<script src="js/crisp.js"></script>
 		
-		<script src="js/app.js">
-           
-		
-		</script>
+		<script src="js/components/Article.js"></script>
+		<script src="js/components/ArticleSection.js"></script>
+		<script src="js/components/Tinder.js"></script>
+		<script src="js/components/EmailSection.js"></script>
+		<script src="js/components/PresentationSection.js"></script>
+		<script src="js/components/JumbotronSection.js"></script>
+		<script src="js/app.js"></script>
         <!-- endbuild -->
 	</body>
 <html>

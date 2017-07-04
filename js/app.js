@@ -1,62 +1,45 @@
- 
-            var post_to_html = function(post){
-                var html ="";
-                return html;
-            };
-            
-            function strip(html)
-            {
-               var tmp = document.createElement("DIV");
-               tmp.innerHTML = html;
-               return tmp.textContent || tmp.innerText || "";
-            }
-		
-			var app = new Vue({
-				el: '#Vue',
-				data: {
-					loaded: true,
-					message: 'Générer un post',
-					btn_clicked: false,
-                    article: '',
-                    email: '',
-                    email_success: false
-				},
-				methods: {
-					generate_article: function() {
-                        this.message = "Génération...";
-						// send get request
-                        var url = "https://just-acme-api.herokuapp.com/article";
-                        //var url = "http://localhost:3000/article";
-						this.$http.post(url, {}).then(function (data, status, request) {
-							// set data on vm
-                            if(data.status == 200){
-                            console.log(data);
-							app.article = data.body;
-                            app.article.media.description = strip(app.article.media.summary.content);
-                            app.article.media.url = app.article.media.originId.replace("http://www.", "").replace("https://www.", "").replace(new RegExp(/[\/].*/), "");
-                            app.message="Générer un autre post";
-                            } else {
-                                app.message="Erreur, réessayer";
-                            }
-						});
-					},
-                    save_email: function() {
-                        console.log("coucou");
-						// send get request
-                        var url = "https://just-acme-api.herokuapp.com/email";
-                        //var url = "http://localhost:3000/email";
-						this.$http.post(url, {email: this.email}).then(function (data, status, request) {
-							// set data on vm
-                            if(data.status == 200){
-                                app.email_success = true;
-                            }
-                            console.log(data);
-							});
-					},
-				},
-                  filters: {
-                    length: function (str, l) {
-                      return str.substr(0,l)+"...";
-                    }
-                  }
-			});
+var Home = { template: 
+    `<div>
+        <JumbotronSection></JumbotronSection> 
+        <PresentationSection></PresentationSection>
+        <ArticleSection></ArticleSection>
+        <EmailSection></EmailSection>
+    </div>`};
+
+var Trainer = { template: 
+    `<div><h1>Le post qui match ?</h1>
+     <Tinder></Tinder></div>` };
+
+var routes = {
+    '/': Home,
+    '/trainer': Trainer
+};
+
+var post_to_html = function(post){
+    var html ="";
+    return html;
+};
+
+function strip(html) {
+   var tmp = document.createElement("DIV");
+   tmp.innerHTML = html;
+   return tmp.textContent || tmp.innerText || "";
+}
+
+var app = new Vue({
+    el: '#Vue',
+    data: {
+        loaded: true,
+        currentRoute: window.location.pathname
+    },
+    
+      
+    computed: {
+        ViewComponent : function () {
+          return routes[this.currentRoute] || Home
+        }
+      },
+    components: [JumbotronSection, PresentationSection, ArticleSection, EmailSection],
+    render: function (create_element) { return create_element(this.ViewComponent) }
+});
+

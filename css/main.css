@@ -12,7 +12,8 @@ html, body{
 }
 
 #generator {
-	display:none;
+    position: relative;
+    overflow: hidden;
 }
 
 #generator.v-cloak {
@@ -177,6 +178,8 @@ article {
         width:600px;
     display: inline-block;
     text-align: left;
+    position: absolute;
+    left: calc(50% - 300px);
 	}
 	
 	article header {
@@ -227,6 +230,10 @@ article {
 		margin:0;
 		font-size: 16px;
 	}
+
+article.dragging {
+    transform: rotate(25deg);
+}
 
 .success {
     background: #2ecc71 !important;
